@@ -33,8 +33,7 @@ export const StyledTitle = styled(Typography)(({ theme }: { theme: Theme }) => (
     textDecoration: "none",
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
-        ...theme.typography.h6,
-        padding: "0",
+        display:'none',
     },
 }))as typeof Link;
 

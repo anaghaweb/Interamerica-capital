@@ -10,13 +10,15 @@ import LargeScreenMenu from './LargeScreenMenu/largeScreenMenu';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import Image from 'next/image';
+import { Toolbar } from '../mui-components';
 
 
 
 function B2BDarkNavbar() { 
     return (
+        <>
             <StyledAppBar
-            position="static"                        
+            position="sticky"                        
         >
             <Container maxWidth="xl"
                 disableGutters
@@ -67,7 +69,9 @@ function B2BDarkNavbar() {
                     <SettingsMenu iconColor='#ffffff'/>                                     
                 </StyledToolbar>
             </Container>
-        </StyledAppBar >        
+            </StyledAppBar >
+            
+        </>
     )   
 }
 export default B2BDarkNavbar;

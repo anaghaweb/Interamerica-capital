@@ -5,7 +5,7 @@ import SettingsMenu from '../SettingsMenu';
 import { StyledTitle, LogoTitleWrapper,  LogoWrapper, StyledToolbar, StyledAppBar } from './b2blight.styled';
 import MobileMenu from '../MobileMenu';
 import { Inter } from 'next/font/google';
-
+import { styled } from '@mui/material/styles'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -13,9 +13,12 @@ const inter = Inter({
 })
 
 
- 
+ const Offset = styled('div')(({ theme }) =>
+    theme.mixins.toolbar);
+
 function B2BLightNavbar() { 
     return (
+        <>
             <StyledAppBar
             position="sticky"  
             
@@ -60,7 +63,9 @@ function B2BLightNavbar() {
                     <SettingsMenu iconColor='#787878'/>                                     
                 </StyledToolbar>
             </Container>
-        </StyledAppBar >        
+            </StyledAppBar > 
+            
+        </>    
     )   
 }
 export default B2BLightNavbar;
