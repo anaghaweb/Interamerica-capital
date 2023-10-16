@@ -3,7 +3,7 @@ import * as React from 'react';
 import ModernPinkNavbar from './ModernPink';
 import ModernBlueNavbar from './ModernBlue';
 import ModernPurpleNavbar from './ModernPurple';
-import B2BDarkNavbar from './B2bNavbarDarkBlue';
+
 import B2BLightNavbar from './B2bNavbarLightBlue';
 import BaseNavbar from './BaseNavbar';
 import EcoboNavbar from './EcoboNavbar';
@@ -28,10 +28,7 @@ const Navbar: React.FC<Props> = ({variant, settings, mobilemenulist}) => {
     case 'b2blight':
       Component = B2BLightNavbar;
       break;
-    case 'b2bdark':
-      Component = B2BDarkNavbar;
-      break;
-    case 'ecobo':
+       case 'ecobo':
       Component = EcoboNavbar;
       break;
     case 'reharvest':

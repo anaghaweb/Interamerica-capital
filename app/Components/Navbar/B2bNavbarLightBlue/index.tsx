@@ -46,13 +46,7 @@ function B2BLightNavbar() {
                              
                             />
                         </LogoWrapper>
-                        <StyledTitle
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="/"  
-                            fontFamily={inter.variable}
-                        ><i>Liquidity in motion</i></StyledTitle>
+                        
                     </LogoTitleWrapper>
                     {/* LARGE SCREEN MENU */}
                
@@ -60,7 +54,7 @@ function B2BLightNavbar() {
                     {/* LOGIN & CART BUTTONS */}
                     
                     {/* SETTINGS MENU */}            
-                    <SettingsMenu iconColor='#787878'/>                                     
+                                                        
                 </StyledToolbar>
             </Container>
             </StyledAppBar > 

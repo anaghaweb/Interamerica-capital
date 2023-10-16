@@ -20,6 +20,7 @@ export const StyledToolbar = styled(Toolbar)(({ theme }: { theme: Theme }) => ({
     color: '#3399FF',
     position: "relative",
     height: 'inherit',
+    width:'100%',
     padding: theme.spacing(1),    
    
 }));
@@ -40,7 +41,7 @@ export const StyledTitle = styled(Typography)(({ theme }: { theme: Theme }) => (
 
 export const LogoTitleWrapper = styled(Box)(({ theme }: { theme: Theme }) => ({
    display:'flex',
-    flexGrow: 1,
+    flexGrow: 0,
     justifyContent: 'flex-start',
     alignItems: 'center',
     color: 'inherit',
