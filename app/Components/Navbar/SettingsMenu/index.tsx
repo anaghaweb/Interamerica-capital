@@ -10,7 +10,7 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { StyledIconButton } from './settingsMenu.styled';
 const profileSettings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const languageMenu = ['English', 'Hindi', 'Kannada', 'Tamil', 'Telugu', 'Malayalam', 'Marathi'];
+const languageMenu = ['English'];
 import { SettingsContext } from '../navbar';
 
 interface IPROPS{
@@ -46,7 +46,7 @@ const SettingsMenu: React.FC<IPROPS> = ({iconColor})=>{
     
     {/* SETTINGS MENU */ }
     return <>
-        <SettingsContext.Provider value={settings || ['System', 'Brightness', 'Installation']}>
+        <SettingsContext.Provider value={settings || ['System']}>
         <Box
             style={{
                 display: 'flex',

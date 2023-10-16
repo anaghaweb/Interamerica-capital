@@ -26,7 +26,7 @@ let theme = createTheme({
 
 
     palette: {
-        mode: 'light',
+        mode: 'dark',
     },
 });
 

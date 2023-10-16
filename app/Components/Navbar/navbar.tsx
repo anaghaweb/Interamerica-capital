@@ -15,8 +15,8 @@ interface Props{
   mobilemenulist?: String[];
 }
 
-export const MobileMenuContext = React.createContext<String[]>(['Products', 'About Us', 'For Businesses'])
-export const SettingsContext = React.createContext<String[]>(['System', 'Brightness', 'Installation']);
+export const MobileMenuContext = React.createContext<String[]>([ 'About Us'])
+export const SettingsContext = React.createContext<String[]>(['System']);
 
 const Navbar: React.FC<Props> = ({variant, settings, mobilemenulist}) => {
     let Component;
@@ -52,8 +52,8 @@ const Navbar: React.FC<Props> = ({variant, settings, mobilemenulist}) => {
   }
     
   return <React.Fragment>
-    <MobileMenuContext.Provider value= {mobilemenulist || ['Products', 'About Us', 'For Businesses']}>
-      <SettingsContext.Provider value={settings || ['System', 'Brightness', 'Installation'] }>
+    <MobileMenuContext.Provider value= {mobilemenulist || [ 'About Us']}>
+      <SettingsContext.Provider value={settings || [ 'Brightness'] }>
       <Component />
       </SettingsContext.Provider>
       </MobileMenuContext.Provider>

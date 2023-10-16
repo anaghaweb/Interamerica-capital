@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import { StyledBox } from './mobileMenu.styled';
 import { MobileMenuContext } from '../navbar';
+import Link from 'next/link';
 
 
 export default function MobileMenu(): JSX.Element {
@@ -21,7 +22,10 @@ export default function MobileMenu(): JSX.Element {
     };
    
     return <>
-        <MobileMenuContext.Provider value={mobilemenulist || ['Products', 'About Us', 'For Businesses']}>
+        <MobileMenuContext.Provider value={mobilemenulist || [{
+    name: 'About Us',
+    link: '/'
+  }]}>
             
              <StyledBox>
                         <IconButton
@@ -53,9 +57,10 @@ export default function MobileMenu(): JSX.Element {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                         >
-                            {mobilemenulist.map((page, index) => (
+                    {mobilemenulist.map(( page, index ) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                    <Link key={index} href="/"><Typography textAlign="center">{page}</Typography></Link>
+                                    
                                 </MenuItem>
                             ))}
                         </Menu>

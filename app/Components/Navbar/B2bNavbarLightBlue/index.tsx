@@ -1,32 +1,32 @@
 'use client'
 import * as React from 'react';
-import { styled, useThemeProps } from '@mui/material/styles';
-import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import InsertPhotoSharpIcon from '@mui/icons-material/InsertPhotoSharp';
 import SettingsMenu from '../SettingsMenu';
-import { StyledTitle, LogoTitleWrapper,  LogoWrapper, StyledButton, StyledLinks, ButtonWrapper,StyledToolbar, StyledAppBar } from './b2blight.styled';
+import { StyledTitle, LogoTitleWrapper,  LogoWrapper, StyledToolbar, StyledAppBar } from './b2blight.styled';
 import MobileMenu from '../MobileMenu';
-import LargeScreenMenu from './LargeScreenMenu/largeScreenMenu';
-import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import Image from 'next/image';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
 
  
 function B2BLightNavbar() { 
     return (
             <StyledAppBar
-            position="static"                        
+            position="sticky"  
+            
         >
             <Container maxWidth="xl"
                 disableGutters
                 style={{height:'inherit'}}
             >
                 <StyledToolbar
-                    disableGutters                 
+                    disableGutters 
+                    className={`${inter.variable}`}
                 >
                     <MobileMenu />
                     {/* LOGO AND TITLE */}
@@ -44,25 +44,18 @@ function B2BLightNavbar() {
                             />
                         </LogoWrapper>
                         <StyledTitle
-                            variant="h4"
+                            variant="h5"
                             noWrap
                             component="a"
-                            href="/"                           
-                        >B2B</StyledTitle>
+                            href="/"  
+                            fontFamily={inter.variable}
+                        ><i>Liquidity in motion</i></StyledTitle>
                     </LogoTitleWrapper>
                     {/* LARGE SCREEN MENU */}
-                    <LargeScreenMenu />    
+               
                     
                     {/* LOGIN & CART BUTTONS */}
-                     <ButtonWrapper>                             
-                        <StyledButton className="stl-btn">                                                   <StyledLinks className="stl-btn" href="#"><ShoppingCartRoundedIcon /><Box className="cart-btn">
-                                    Cart</Box></StyledLinks>
-                        </StyledButton>
-                        <StyledButton className="stl-btn">
-                            <StyledLinks className="stl-btn" href="#"> <LoginOutlinedIcon />
-                                <Box className="cart-btn">Login</Box></StyledLinks>
-                        </StyledButton>
-                    </ButtonWrapper>
+                    
                     {/* SETTINGS MENU */}            
                     <SettingsMenu iconColor='#787878'/>                                     
                 </StyledToolbar>

@@ -2,14 +2,16 @@
 import { Paper, TextField, Box } from "@mui/material";
 import {styled, Theme} from "@mui/material/styles"
 
-export const StyledTextField = styled(TextField)(({ theme }:{theme:Theme}) => ({   
+export const StyledTextField = styled(TextField)(({ theme }: { theme: Theme }) => ({  
+    display: 'flex',
+    flexGrow: 1,
     '&.field': {
-        display: 'flex',
-        flexGrow: 1,
-        marginTop: '0.4rem',
-        marginBottom:'0.4rem',
-        height: 'auto',    
-    }
+        marginTop: '0.5rem',
+        marginBottom:'0.5rem',
+        fontWeight:'500'
+    },
+
+    
 }))
 
 export const ContactLogoWrapper = styled(Paper)(({ theme }) => ({   

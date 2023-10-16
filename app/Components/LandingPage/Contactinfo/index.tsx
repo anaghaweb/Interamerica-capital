@@ -14,7 +14,7 @@ const ContactInfo: React.FC = () => {
         <Typography variant="body1">74 E Glenwood Ave</Typography>
         <Typography variant="body1">Suite 5235</Typography>
         <Typography variant="body1">Smyrna, DE 19977</Typography>
-      <Typography variant="body1"
+      <Typography variant="body1" color="#3399FF"
         component="a"
         href="mailto:contact@interamerica.capital"
       >contact@interamerica.capital</Typography>

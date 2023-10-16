@@ -1,12 +1,12 @@
 'use client'
 import { styled, Theme } from '@mui/material/styles';
 import { Box, IconButton, Link, Toolbar, AppBar, Button, Typography } from '../mui-components';
-import { Transform } from '@mui/icons-material';
+
 
 export const StyledAppBar = styled(AppBar)(({ theme }: { theme: Theme }) => ({
     height:'3rem',
     [theme.breakpoints.up('md')]: {
-        height:'5rem'
+        height:'4rem'
     },    
      '*,*:visited':{
          textDecoration: 'none',
@@ -26,11 +26,11 @@ export const StyledToolbar = styled(Toolbar)(({ theme }: { theme: Theme }) => ({
 
 export const StyledTitle = styled(Typography)(({ theme }: { theme: Theme }) => ({
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     flexGrow: 1,
-    fontFamily: "inherit",
-    fontWeight: 500,
-    color: "inherit",
+    fontFamily: 'monospace',
+    fontWeight: '300',
+    color: "#3399FF",
     textDecoration: "none",
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
