@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Container, Button, Box } from '@mui/material'
 import { StyledTextField } from '../landing.styles';
 import CustomSnackbar from '../Mui-components/Snackbar';
+import axios from 'axios';
 
 const ContactForm: React.FC = () => {
   
@@ -47,46 +48,45 @@ const ContactForm: React.FC = () => {
            
     const currentDate = new Date().toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles'})
     console.log(currentDate);
+    
     const formData = {
       Date:currentDate,
-      "First Name":firstname,
-      "Last Name":lastname,
+      FirstName:firstname,
+      LastName:lastname,
       Email:email,
       Subject:subject,
       Message:message,
     }
-  
-    const scriptUrl = 'https://sheet.best/api/sheets/2aa0fa39-6506-4b60-88b1-c6e8f48157fb';
-     
+    
+    const jsondata = JSON.stringify(formData);
+    // const scriptUrl = 'https://sheet.best/api/sheets/2aa0fa39-6506-4b60-88b1-c6e8f48157fb';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyvzFr6ngaCjOhZQeJWyD5iFSNU3l3qS9sGZkJcb9bNRvsc_ZBmE60WdjxjHJhK8486/exec';
+
     try {
-      
-      
-      const response = await fetch(scriptUrl, {
-        method: 'POST',  
-        body: JSON.stringify(formData),
-        headers: {         
-          'Content-Type': "application/json",
-        },           
-      });
-      const content = await response.json();
-      if (response.ok) {
-        console.log(content);
-        setFirstName('');
-         setLastName('');
-        setEmail('');
-        setMessage('');
-        setSubject('');
-        setSnackbarMessage('Your Message was submitted successfully!. We will get back to you at the earliest');
-        setSnackbarSeverity('success');
-        setOpenSnackbar(true);
+
+      axios.post(scriptUrl, jsondata).then(response => {
+        response.data
+        
+        if (response) {
+          console.log(response);
+          setFirstName('');
+          setLastName('');
+          setEmail('');
+          setMessage('');
+          setSubject('');
+          setSnackbarMessage('Your Message was submitted sucessfully! We will get back to you shortly');
+          setSnackbarSeverity('success');
+          setOpenSnackbar(true);
        
-      } else {
-        console.error('Form data submission failed');
-        setSnackbarMessage('Form data submission failed');
-        setSnackbarSeverity('error');
-        setOpenSnackbar(true);
-      }
-    } catch (error) {
+        } else {
+          console.error('Form data submission failed');
+          setSnackbarMessage('Form data submission failed');
+          setSnackbarSeverity('error');
+          setOpenSnackbar(true);
+        }
+      })
+    }
+    catch (error) {
       console.error('Error submitting form data:', error);
       setSnackbarMessage('Error submitting form data');
       setSnackbarSeverity('error');
