@@ -19,7 +19,7 @@ export const StyledAppBar = styled(AppBar)(({ theme }: { theme: Theme }) => ({
 }));
 
 export const StyledToolbar = styled(Toolbar)(({ theme }: { theme: Theme }) => ({
-    backgroundColor: '#DAE8FC',
+    backgroundColor: '#ffffff',
     color: '#3399FF',
     position: "relative",
     height: 'inherit',
