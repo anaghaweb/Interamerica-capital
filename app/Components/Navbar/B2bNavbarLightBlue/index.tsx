@@ -5,7 +5,8 @@ import SettingsMenu from '../SettingsMenu';
 import { StyledTitle, LogoTitleWrapper,  LogoWrapper, StyledToolbar, StyledAppBar } from './b2blight.styled';
 import MobileMenu from '../MobileMenu';
 import { Inter } from 'next/font/google';
-import { styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -20,10 +21,11 @@ function B2BLightNavbar() {
     return (
         <>
             <StyledAppBar
-            position="sticky"  
-            
+                position="sticky" 
+            elevation={1}   
         >
-            <Container maxWidth="xl"
+                <Container 
+                maxWidth={false}
                 disableGutters
                 style={{height:'inherit'}}
             >
@@ -49,7 +51,7 @@ function B2BLightNavbar() {
                         
                     </LogoTitleWrapper>
                     {/* LARGE SCREEN MENU */}
-               
+                                
                     
                     {/* LOGIN & CART BUTTONS */}
                     

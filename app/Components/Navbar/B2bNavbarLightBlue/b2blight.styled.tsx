@@ -4,7 +4,10 @@ import { Box, IconButton, Link, Toolbar, AppBar, Button, Typography } from '../m
 
 
 export const StyledAppBar = styled(AppBar)(({ theme }: { theme: Theme }) => ({
-    height:'3rem',
+    width: '100%',
+    maxWidth: '1600px',
+    margin:'0 auto',
+    height: '3rem',
     [theme.breakpoints.up('md')]: {
         height:'4rem'
     },    
