@@ -105,12 +105,7 @@ const ContactForm: React.FC = () => {
       className="contact-form"
       sx={{ my: "0.5rem", fontFamily: "monospace" }}
     >
-      <form
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit}
-        action="https://script.google.com/macros/s/AKfycbyvzFr6ngaCjOhZQeJWyD5iFSNU3l3qS9sGZkJcb9bNRvsc_ZBmE60WdjxjHJhK8486/exec"
-      >
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <Box className="form-group">
           {/* <label htmlFor="name">Name:</label> */}
           <StyledTextField
@@ -126,7 +121,7 @@ const ContactForm: React.FC = () => {
             onChange={(e) => setFirstName(e.target.value)}
             onFocus={handleFirstNameFocus}
             onBlur={handleFirstNameFocus}
-            // error={firstNameFocused && !nameRegex.test(firstname)}
+            error={firstNameFocused && !nameRegex.test(firstname)}
           />
           <ValidationError
             prefix="firstname"
@@ -149,11 +144,11 @@ const ContactForm: React.FC = () => {
             onChange={(e) => setLastName(e.target.value)}
             onFocus={handleLastNameFocus}
             onBlur={handleLastNameFocus}
-            // error={lastNameFocused && !nameRegex.test(lastname)}
+            error={lastNameFocused && !nameRegex.test(lastname)}
           />
           <ValidationError
-            prefix="lasttname"
-            field="lasttname"
+            prefix="lastname"
+            field="lastname"
             errors={state.errors}
           />
         </Box>
@@ -176,7 +171,7 @@ const ContactForm: React.FC = () => {
                 ? "Enter a valid email ID"
                 : ""
             }
-            // error={!emailRegex.test(email) && emailFocused}
+            error={!emailRegex.test(email) && emailFocused}
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
         </Box>
