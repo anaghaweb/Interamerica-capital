@@ -9,9 +9,7 @@ export const StyledTextField = styled(TextField)(({ theme }: { theme: Theme }) =
         marginTop: '0.5rem',
         marginBottom:'0.5rem',
         fontWeight:'500'
-    },
-
-    
+    },    
 }))
 
 export const ContactLogoWrapper = styled(Paper)(({ theme }) => ({   

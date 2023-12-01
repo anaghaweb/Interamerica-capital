@@ -1,61 +1,61 @@
-'use client'
-import * as React from 'react';
-import ModernPinkNavbar from './ModernPink';
-import ModernBlueNavbar from './ModernBlue';
-import ModernPurpleNavbar from './ModernPurple';
+"use client";
+import * as React from "react";
+import ModernPinkNavbar from "./ModernPink";
+import ModernBlueNavbar from "./ModernBlue";
+import ModernPurpleNavbar from "./ModernPurple";
 
-import B2BLightNavbar from './B2bNavbarLightBlue';
-import BaseNavbar from './BaseNavbar';
-import EcoboNavbar from './EcoboNavbar';
-import ReharvestNavbar from './ReharvestNavbar';
+import B2BLightNavbar from "./B2bNavbarLightBlue";
+import BaseNavbar from "./BaseNavbar";
+import EcoboNavbar from "./EcoboNavbar";
+import ReharvestNavbar from "./ReharvestNavbar";
 
-interface Props{
+interface Props {
   variant?: String | undefined;
   settings?: String[];
   mobilemenulist?: String[];
 }
 
-export const MobileMenuContext = React.createContext<String[]>([ 'About Us'])
-export const SettingsContext = React.createContext<String[]>(['System']);
+export const MobileMenuContext = React.createContext<String[]>(["About Us"]);
+export const SettingsContext = React.createContext<String[]>(["System"]);
 
-const Navbar: React.FC<Props> = ({variant, settings, mobilemenulist}) => {
-    let Component;
-    console.log(variant);
+const Navbar: React.FC<Props> = ({ variant, settings, mobilemenulist }) => {
+  let Component;
+
   switch (variant) {
-    case 'basic':
+    case "basic":
       Component = BaseNavbar;
       break;
-    case 'b2blight':
+    case "b2blight":
       Component = B2BLightNavbar;
       break;
-       case 'ecobo':
+    case "ecobo":
       Component = EcoboNavbar;
       break;
-    case 'reharvest':
+    case "reharvest":
       Component = ReharvestNavbar;
       break;
-    case 'modernpink':
+    case "modernpink":
       Component = ModernPinkNavbar;
       break;
-    case 'modernblue':
+    case "modernblue":
       Component = ModernBlueNavbar;
       break;
-    case 'modernpurple':
+    case "modernpurple":
       Component = ModernPurpleNavbar;
       break;
-      default:
-          Component = BaseNavbar;
-        
+    default:
+      Component = BaseNavbar;
   }
-    
-  return <React.Fragment>
-    <MobileMenuContext.Provider value= {mobilemenulist || [ 'About Us']}>
-      <SettingsContext.Provider value={settings || [ 'Brightness'] }>
-      <Component />
-      </SettingsContext.Provider>
+
+  return (
+    <React.Fragment>
+      <MobileMenuContext.Provider value={mobilemenulist || ["About Us"]}>
+        <SettingsContext.Provider value={settings || ["Brightness"]}>
+          <Component />
+        </SettingsContext.Provider>
       </MobileMenuContext.Provider>
-        </React.Fragment>
-    
-}
+    </React.Fragment>
+  );
+};
 
 export default Navbar;
