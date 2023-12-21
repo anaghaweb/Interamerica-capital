@@ -8,7 +8,6 @@ import { useForm, ValidationError } from "@formspree/react";
 
 const ContactForm: React.FC = () => {
   const [state, handleFormSubmit] = useForm("xeqbbley");
-
   const [firstname, setFirstName] = React.useState<string>("");
   const [lastname, setLastName] = React.useState<string>("");
   const [email, setEmail] = React.useState<string>("");
