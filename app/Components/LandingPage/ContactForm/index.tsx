@@ -3,7 +3,7 @@ import * as React from "react";
 import { Container, Button, Box } from "@mui/material";
 import { StyledTextField } from "../landing.styles";
 import CustomSnackbar from "../Mui-components/Snackbar";
-import axios from "axios";
+
 import { useForm, ValidationError } from "@formspree/react";
 
 const ContactForm: React.FC = () => {
@@ -47,33 +47,45 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await handleFormSubmit(e);
+   // await handleFormSubmit(e);
 
-    if (state.succeeded) {
-      const currentDate = new Date().toLocaleDateString("en-US", {
+   // if (state.succeeded) {
+      const date = new Date().toLocaleDateString("en-US", {
         timeZone: "America/Los_Angeles",
       });
 
       const formData = {
-        Date: currentDate,
-        FirstName: firstname,
-        LastName: lastname,
-        Email: email,
-        Subject: subject,
-        Message: message,
+        date,
+        firstname,
+        lastname,
+        email,
+        subject,
+        message,
       };
 
-      const jsondata = JSON.stringify(formData);
-      // const scriptUrl = 'https://sheet.best/api/sheets/2aa0fa39-6506-4b60-88b1-c6e8f48157fb';
-      const scriptUrl =
-        "https://script.google.com/macros/s/AKfycbyvzFr6ngaCjOhZQeJWyD5iFSNU3l3qS9sGZkJcb9bNRvsc_ZBmE60WdjxjHJhK8486/exec";
+      // const jsondata = JSON.stringify(formData);
+      // // const scriptUrl = 'https://sheet.best/api/sheets/2aa0fa39-6506-4b60-88b1-c6e8f48157fb';
+      // const scriptUrl =
+      //   "https://script.google.com/macros/s/AKfycbyvzFr6ngaCjOhZQeJWyD5iFSNU3l3qS9sGZkJcb9bNRvsc_ZBmE60WdjxjHJhK8486/exec";
 
       try {
-        axios.post(scriptUrl, jsondata).then((response) => {
-          response.data;
+        // axios.post(scriptUrl, jsondata).then((response) => {
+        //   response.data;
 
-          if (response) {
-            console.log(response);
+        const response = await fetch("/api/contactus", {
+
+          method:'POST',
+          headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify(formData)
+        })
+
+        const result = await response.json();
+
+          if (result) {
+            
             setFirstName("");
             setLastName("");
             setEmail("");
@@ -90,14 +102,14 @@ const ContactForm: React.FC = () => {
             setSnackbarSeverity("error");
             setOpenSnackbar(true);
           }
-        });
+        
       } catch (error) {
         console.error("Error submitting form data:", error);
         setSnackbarMessage("Error submitting form data");
         setSnackbarSeverity("error");
         setOpenSnackbar(true);
       }
-    }
+    //}
   };
   return (
     <Container

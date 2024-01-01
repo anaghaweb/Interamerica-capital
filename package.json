@@ -9,28 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
     "@formspree/react": "^2.5.1",
     "@mui/icons-material": "^5.14.13",
-    "@mui/material": "^5.14.13",
+    "@mui/material": "^5.15.2",
     "axios": "^1.5.1",
+    "googleapis": "^129.0.0",
     "next": "^14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@mui/zero-next-plugin": "file:../../packages/zero-next-plugin/build",
-    "@mui/zero-tag-processor": "file:../../packages/zero-tag-processor/build",
+    
     "@types/node": "^20",
     "@types/react": "^18.2.41",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "^14.0.3",
     "typescript": "^5"
-  },
-  "resolutions": {
-    "@mui/zero-tag-processor": "file:../../packages/zero-tag-processor/build"
   }
 }
