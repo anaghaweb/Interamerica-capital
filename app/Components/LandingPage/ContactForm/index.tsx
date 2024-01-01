@@ -47,9 +47,9 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-   // await handleFormSubmit(e);
+   await handleFormSubmit(e);
 
-   // if (state.succeeded) {
+   if (state.succeeded) {
       const date = new Date().toLocaleDateString("en-US", {
         timeZone: "America/Los_Angeles",
       });
@@ -63,15 +63,8 @@ const ContactForm: React.FC = () => {
         message,
       };
 
-      // const jsondata = JSON.stringify(formData);
-      // // const scriptUrl = 'https://sheet.best/api/sheets/2aa0fa39-6506-4b60-88b1-c6e8f48157fb';
-      // const scriptUrl =
-      //   "https://script.google.com/macros/s/AKfycbyvzFr6ngaCjOhZQeJWyD5iFSNU3l3qS9sGZkJcb9bNRvsc_ZBmE60WdjxjHJhK8486/exec";
-
       try {
-        // axios.post(scriptUrl, jsondata).then((response) => {
-        //   response.data;
-
+      
         const response = await fetch("/api/contactus", {
 
           method:'POST',
@@ -82,9 +75,7 @@ const ContactForm: React.FC = () => {
           body:JSON.stringify(formData)
         })
 
-        const result = await response.json();
-
-          if (result) {
+          if (response.status === 200) {
             
             setFirstName("");
             setLastName("");
@@ -109,7 +100,7 @@ const ContactForm: React.FC = () => {
         setSnackbarSeverity("error");
         setOpenSnackbar(true);
       }
-    //}
+    }
   };
   return (
     <Container
