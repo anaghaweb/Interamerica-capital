@@ -217,7 +217,7 @@ const ContactForm: React.FC = () => {
           type="submit"
           variant="outlined"
           style={{ display: "flex", width: "100%" }}
-          disabled={state.submitting | !email | !firstname | !lastname }
+          disabled={state.submitting || !email || !firstname || !lastname }
         >
           {state.submitting ? "Submitting..." : "Submit"}
         </Button>
