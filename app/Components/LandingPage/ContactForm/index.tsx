@@ -44,16 +44,75 @@ const ContactForm: React.FC = () => {
     setOpenSnackbar(false);
   };
 
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //  await handleFormSubmit(e);
+
+  //  if (state.succeeded) {
+  //     const date = new Date().toLocaleDateString("en-US", {
+  //       timeZone: "America/Los_Angeles",
+  //     });
+
+  //     const formData = {
+  //       date,
+  //       firstname,
+  //       lastname,
+  //       email,
+  //       subject,
+  //       message,
+  //     };
+
+  //     try {
+      
+  //       const response = await fetch("/api/contactus", {
+
+  //         method:'POST',
+  //         headers:{
+  //           'Accept':'application/json',
+  //           'Content-Type':'application/json'
+  //         },
+  //         body:JSON.stringify(formData)
+  //       })
+
+  //         if (response.status === 200) {
+            
+  //           setFirstName("");
+  //           setLastName("");
+  //           setEmail("");
+  //           setMessage("");
+  //           setSubject("");
+  //           setSnackbarMessage(
+  //             "Your Message was submitted sucessfully! We will get back to you shortly"
+  //           );
+  //           setSnackbarSeverity("success");
+  //           setOpenSnackbar(true);
+  //         } else {
+  //           console.error("Form data submission failed");
+  //           setSnackbarMessage("Form data submission failed");
+  //           setSnackbarSeverity("error");
+  //           setOpenSnackbar(true);
+  //         }
+        
+  //     } catch (error) {
+  //       console.error("Error submitting form data:", error);
+  //       setSnackbarMessage("Error submitting form data");
+  //       setSnackbarSeverity("error");
+  //       setOpenSnackbar(true);
+  //     }
+  //   }
+  // };
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-   await handleFormSubmit(e);
-
-   if (state.succeeded) {
+  
+    try {
+      const formSubmitPromise = handleFormSubmit(e);
+      
       const date = new Date().toLocaleDateString("en-US", {
         timeZone: "America/Los_Angeles",
       });
-
+  
       const formData = {
         date,
         firstname,
@@ -62,46 +121,43 @@ const ContactForm: React.FC = () => {
         subject,
         message,
       };
-
-      try {
-      
-        const response = await fetch("/api/contactus", {
-
-          method:'POST',
-          headers:{
-            'Accept':'application/json',
-            'Content-Type':'application/json'
-          },
-          body:JSON.stringify(formData)
-        })
-
-          if (response.status === 200) {
-            
-            setFirstName("");
-            setLastName("");
-            setEmail("");
-            setMessage("");
-            setSubject("");
-            setSnackbarMessage(
-              "Your Message was submitted sucessfully! We will get back to you shortly"
-            );
-            setSnackbarSeverity("success");
-            setOpenSnackbar(true);
-          } else {
-            console.error("Form data submission failed");
-            setSnackbarMessage("Form data submission failed");
-            setSnackbarSeverity("error");
-            setOpenSnackbar(true);
-          }
-        
-      } catch (error) {
-        console.error("Error submitting form data:", error);
-        setSnackbarMessage("Error submitting form data");
+  
+      const googleSheetsResponse = await fetch("/api/contactus", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      await formSubmitPromise; 
+  
+      if (googleSheetsResponse.status === 200) {
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setMessage("");
+        setSubject("");
+        setSnackbarMessage(
+          "Your Message was submitted successfully! We will get back to you shortly"
+        );
+        setSnackbarSeverity("success");
+        setOpenSnackbar(true);
+      } else {
+        console.error("Form data submission to Google Sheets failed");
+        setSnackbarMessage("Form data submission to Google Sheets failed");
         setSnackbarSeverity("error");
         setOpenSnackbar(true);
       }
+    } catch (error) {
+      console.error("Error submitting form data:", error);
+      setSnackbarMessage("Error submitting form data");
+      setSnackbarSeverity("error");
+      setOpenSnackbar(true);
     }
   };
+  
   return (
     <Container
       className="contact-form"
