@@ -107,7 +107,7 @@ const ContactForm: React.FC = () => {
       className="contact-form"
       sx={{ my: "0.5rem", fontFamily: "monospace" }}
     >
-      <form autoComplete="off" onSubmit={handleSubmit}>
+      <form autoComplete="off" onSubmit={handleSubmit} disabled={state.submitting}>
         <Box className="form-group">
           {/* <label htmlFor="name">Name:</label> */}
           <StyledTextField
@@ -217,7 +217,7 @@ const ContactForm: React.FC = () => {
           type="submit"
           variant="outlined"
           style={{ display: "flex", width: "100%" }}
-          disabled={state.submitting}
+          disabled={state.submitting | !email | !firstname | !lastname }
         >
           {state.submitting ? "Submitting..." : "Submit"}
         </Button>
